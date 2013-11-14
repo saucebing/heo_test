@@ -1,0 +1,6 @@
+1 mkdir app
+2 chmod app
+3 cd app
+4 create index.php
+5 chown -R sysu:apache Lib
+6 chown -R sysu:apache Tpl
