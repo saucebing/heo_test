@@ -1,8 +1,8 @@
--- MySQL dump 10.14  Distrib 5.5.33a-MariaDB, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.28, for Linux (i686)
 --
 -- Host: localhost    Database: thinkphp
 -- ------------------------------------------------------
--- Server version	5.5.33a-MariaDB
+-- Server version	5.5.28-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `test`;
 CREATE TABLE `test` (
   `id` int(8) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `city` varchar(255)
+  `city` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -37,6 +37,29 @@ LOCK TABLES `test` WRITE;
 /*!40000 ALTER TABLE `test` DISABLE KEYS */;
 INSERT INTO `test` VALUES (1,'234',NULL),(2,'234',NULL),(4,'234',NULL),(45,'233',NULL),(41,'233',NULL),(31,'233',NULL);
 /*!40000 ALTER TABLE `test` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `test2`
+--
+
+DROP TABLE IF EXISTS `test2`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `test2` (
+  `id` int(8) DEFAULT NULL,
+  `id2` int(8) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `test2`
+--
+
+LOCK TABLES `test2` WRITE;
+/*!40000 ALTER TABLE `test2` DISABLE KEYS */;
+INSERT INTO `test2` VALUES (2,2);
+/*!40000 ALTER TABLE `test2` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -130,7 +153,7 @@ CREATE TABLE `think_message` (
   `mtype` varchar(8) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`mid`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +162,7 @@ CREATE TABLE `think_message` (
 
 LOCK TABLES `think_message` WRITE;
 /*!40000 ALTER TABLE `think_message` DISABLE KEYS */;
-INSERT INTO `think_message` VALUES (1,9,7,-1,'1000','Hello!'),(2,9,7,-1,'1000','Can you receive my message?'),(3,9,6,-1,'1000','eee'),(4,6,8,36,'10','Cancel Posed Task'),(9,7,9,-1,'1000','You are a fool.'),(8,7,3,-1,'1000','werwedfs'),(7,6,9,41,'20','Cancel Received Task');
+INSERT INTO `think_message` VALUES (1,9,7,-1,'1000','Hello!'),(2,9,7,-1,'1000','Can you receive my message?'),(3,9,6,-1,'1000','eee'),(4,6,8,36,'10','Cancel Posed Task'),(9,7,9,-1,'1001','You are a fool.'),(8,7,3,-1,'1000','werwedfs');
 /*!40000 ALTER TABLE `think_message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,7 +211,7 @@ CREATE TABLE `think_task_info` (
   `status` varchar(255) DEFAULT 'New Pose',
   `taskgpp` int(8) DEFAULT NULL,
   PRIMARY KEY (`tid`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -197,7 +220,7 @@ CREATE TABLE `think_task_info` (
 
 LOCK TABLES `think_task_info` WRITE;
 /*!40000 ALTER TABLE `think_task_info` DISABLE KEYS */;
-INSERT INTO `think_task_info` VALUES (36,6,8,'Fetch the express','buy an apple','please help me buy an apple','m','no','New Pose',2),(44,9,-1,'Fetch the express','I want to travel','Who can go with me?','m','','New Pose',2),(38,8,9,'Pack a meal','PackAMeal','帮我打包～　　至　慎六　３０8','m','thank you very much','Received',1),(39,8,-1,'Fetch the express','组队吃宵夜～　今晚10:45','一起去贝岗吃宵夜，有么？　10:45p.m.','m','来吧～　','New Pose',0),(41,9,6,'Pack a meal','I want a bowl of noodle.','Please help me.','m','I will give you money.','Received',5),(42,9,-1,'Pack a meal','Tell me a joke','Let me laugh','m','Nothing else.','New Pose',6),(43,9,-1,'Fetch the express','Can you share happy with me?','I am so sad now.','f','I expect you can.','New Pose',3);
+INSERT INTO `think_task_info` VALUES (36,6,8,'Fetch the express','buy an apple','please help me buy an apple','m','no','New Pose',2),(44,9,-1,'Fetch the express','I want to travel','Who can go with me?','m','','New Pose',2),(38,8,9,'Pack a meal','PackAMeal','帮我打包～　　至　慎六　３０8','m','thank you very much','Received',1),(39,8,11,'Fetch the express','组队吃宵夜～　今晚10:45','一起去贝岗吃宵夜，有么？　10:45p.m.','m','来吧～　','Received',0),(41,9,-1,'Pack a meal','I want a bowl of noodle.','Please help me.','m','I will give you money.','New Pose',5),(42,9,-1,'Pack a meal','Tell me a joke','Let me laugh','m','Nothing else.','New Pose',6),(45,9,-1,'Fetch the express','test','test','m','test','New Pose',2),(46,9,-1,'Fetch the express','test2','test2','m','','New Pose',0);
 /*!40000 ALTER TABLE `think_task_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +264,7 @@ CREATE TABLE `think_user_info` (
   `gpp` int(8) NOT NULL DEFAULT '20',
   `area` varchar(255) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -250,7 +273,7 @@ CREATE TABLE `think_user_info` (
 
 LOCK TABLES `think_user_info` WRITE;
 /*!40000 ALTER TABLE `think_user_info` DISABLE KEYS */;
-INSERT INTO `think_user_info` VALUES (1,'aaa','aaa','m','abc@q.a',20,''),(2,'bbb','bbb','m','abc@q.a',20,'East Campus'),(3,'123','123','m','abc@q.a',20,'East Campus'),(4,'qqq','qqq','m','abc@q.a',20,'East Campus'),(5,'ttt','ttt','m','abc@q.a',20,'East Campus'),(6,'you','you','m','abc@q.a',20,'East Campus'),(7,'33online','11223344','m','1316267054@qq.com',20,'East Campus'),(8,'eric','eric','m','nameljh@sina.com',20,'East Campus'),(9,'at','at','m','abc@q.a',20,'East Campus'),(-1,'NULL','','','',20,'');
+INSERT INTO `think_user_info` VALUES (1,'aaa','aaa','m','abc@q.a',20,''),(2,'bbb','bbb','m','abc@q.a',20,'East Campus'),(3,'123','123','m','abc@q.a',20,'East Campus'),(4,'qqq','qqq','m','abc@q.a',20,'East Campus'),(5,'ttt','ttt','m','abc@q.a',20,'East Campus'),(6,'you','you','m','abc@q.a',20,'East Campus'),(7,'33online','11223344','m','1316267054@qq.com',20,'East Campus'),(8,'eric','eric','m','nameljh@sina.com',20,'East Campus'),(9,'at','at','m','abc@q.a',15,'East Campus'),(-1,'NULL','','','',20,''),(10,'haha','haha','m','abc@q.a',20,'East Campus'),(11,'lala','lala','m','abc@q.a',5,'East Campus'),(12,'ppp','[[[','m','abc@q.a',20,'East Campus'),(13,'rrr','rrr','m','abc@q.a',20,'East Campus');
 /*!40000 ALTER TABLE `think_user_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -263,4 +286,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-17 15:08:24
+-- Dump completed on 2013-11-17 18:24:21
