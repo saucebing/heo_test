@@ -1,0 +1,8 @@
+ mkdir app
+ chmod app
+ cd app
+ create index.php
+ chown -R sysu:sysu heo_test
+ chown -R sysu:apache Lib
+ chown -R sysu:apache Tpl
+ chown -R apache:apache Runtime
