@@ -1,6 +1,13 @@
 <?php
 class MessageAction extends Action
 {
+	public function sendMessageAtom($msid,$mrid,$mtid,$mtype,$content)
+	{
+		$SQL = new Modle();
+		$sql = 'insert into think_message(msid,mrid,mtid,mtype,content) values("'.$msid.'","'.$rid.'","'.$tid.'","'.$mtype.'","'.$content.'"';
+		$result = $SQL->execute($sql);
+	}
+
 	public function sendMessage()
 	{
 		$Data = D('Message');
@@ -31,8 +38,10 @@ class MessageAction extends Action
 		$where = 'from think_message,think_user_info where think_message.msid = think_user_info.uid and mrid = "'.$_SESSION["uid"].'"';
 		$sql = 'select * '.$where;
 		$sql2 = 'select count(*) as count '.$where;
+		$sql3 = 'update think_message set mtype = "1001" where mtype = "1000" and mrid = "'.$_SESSION["uid"].'"';
 		$Data = $SQL->query($sql);
 		$count = $SQL->query($sql2);
+		$result = $SQL->execute($sql3);
 		if($Data)
 		{
 			$this->assign('message',$Data);
@@ -41,8 +50,22 @@ class MessageAction extends Action
 		}
 		else
 		{
-			$this->error("error");
-			//$this->display('Index:index');
+			$this->display('Index:index');
+		}
+	}
+
+	public function checkMessage()
+	{
+		$SQL = new Model();
+		$sql = 'select * from think_message where mrid = "'.$_SESSION["uid"].'" and mtype != "1001"';
+		$Data = $SQL->query($sql);
+		if($Data)
+		{
+			echo "1";
+		}
+		else
+		{
+			echo "0";
 		}
 	}
 }

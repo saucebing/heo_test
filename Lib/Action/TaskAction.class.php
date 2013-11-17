@@ -128,5 +128,58 @@
 			else
 				$this->display("Index:index");
 		}
+		
+		public function agreeCancelTask()
+		{
+			$MID = $_POST["mid"];
+			$MTYPE = $_POST["mtype"];
+			$MTID = $_POST["mtid"];
+			$SQL = new Model();
+			$sql = 'update think_task_info set rid = "-1",status = "New Pose" where tid = "'.$MTID.'"';
+			$sql2 = 'delete from think_message where mid = "'.$MID.'"';
+			$result = $SQL->execute($sql);
+			$result = $SQL->execute($sql2);
+			if($result)
+			{
+				if($MTYPE == "10")
+					$this->success("You have cancel your posed task","__ROOT__/index.php/Index/index");
+				else if($MTYPE == "20")
+					$this->success("You have cancel your received task","__ROOT__/index.php/Index/index");
+
+			}
+			else
+			{
+				$this->error("Error","__ROOT__/index.php/Index/index");
+			}
+		}
+		
+		public function disagreeCancelTask()
+		{
+			$deductGPP = 5;
+			$MID = $_POST["mid"];
+			$MTYPE = $_POST["mtype"];
+			$MTID = $_POST["mtid"];
+			$MSID = $_POST["msid"];
+			$SQL = new Model();
+			$sql = 'update think_task_info set rid = "-1",status = "New Pose" where tid = "'.$MTID.'"';
+			$sql2 = 'delete from think_message where mid = "'.$MID.'"';
+			$sql3 = 'update think_user_info set gpp = gpp - '.$deductGPP.' where uid = "'.$MSID.'"';
+			$result = $SQL->execute($sql);
+			$result = $SQL->execute($sql2);
+			$result = $SQL->execute($sql3);
+
+			if($result)
+			{
+				if($MTYPE == "10")
+					$this->success('You disagree the request,but the task is still be cancelled,and the poser has been punished.',"__ROOT__/index.php/Index/index");
+				else if($MTYPE == "20")
+					$this->success('You disagree the request,but the task is still be cancelled,and the receiver has been punished.',"__ROOT__/index.php/Index/index");
+			}
+			else
+			{
+				$this->error("error","__ROOT__/index.php/Index/index");
+			}
+			
+		}
     }
 ?>

@@ -15,3 +15,9 @@
 	border-style:solid;
 	border-width:1px;
 }
+
+#p_new_message
+{
+	color:red;
+	display:None;
+}

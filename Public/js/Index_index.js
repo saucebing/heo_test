@@ -15,3 +15,15 @@ $(document).ready(function(){
 				window.location.href="../Message/viewMessage";
 				});
 			});
+
+var t = setTimeout("checkMessage()",3000);
+function checkMessage()
+{
+	$.get("../Message/checkMessage",function(data,status){
+		if(data == 1)
+			$("#p_new_message").fadeIn();
+		else
+			$("#p_new_message").fadeOut();
+		});
+	t = setTimeout("checkMessage()",3000);
+}

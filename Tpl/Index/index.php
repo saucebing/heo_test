@@ -198,6 +198,7 @@
 		?>
 		<br/>
 		<hr/>
+		<p id="p_new_message">You have new message</p>
 		<button type="button" id="viewMessage">View Message</button>
 		<?php
 			echo '<table id="message_list">';
@@ -206,7 +207,7 @@
 			{
 				echo '<tr class="message_tr"><td class="message_td"><div>';
 				echo '<p class="message_toggle'.$i.'">'.$message[$i]["username"].':'.$message[$i]["content"].'</p>';
-				if($message[$i]["mtype"] == "1000")
+				if($message[$i]["mtype"] == "1000" || $message[$i]["mtype"] == "1001")
 				{
 					echo '<form method="post" action="__ROOT__/index.php/Message/sendMessage">';
 					echo '<input type="text" class="message_info'.$i.'" name="content"/>';
@@ -217,10 +218,26 @@
 					echo '<input type="submit" class="message_info'.$i.'" value="send"/>';
 					echo '</form>';
 				}
-				else
+				else if($message[$i]["mtype"] == "10" || $message[$i]["mtype"] == "20")
 				{
-					echo '<button id="agree_cancel_task'.$i.'" class="message_info'.$i.'">Agree'.'</button>';
-					echo '<button id="disagree_cancel_task'.$i.'" class="message_info'.$i.'">Disagree'.'</button>';
+					$SQL = new Model();
+					$sql = 'select title from think_task_info where tid = "'.$message[$i]["mtid"].'"';
+					$Data = $SQL->query($sql);
+					echo '<p class="message_info'.$i.'">Title: '.$Data[0]["title"].'</p>';
+					echo '<form method="post" action="__ROOT__/index.php/Task/agreeCancelTask">';
+					echo '<input type="hidden" class="message_info'.$i.'" name="mid" value="'.$message[$i]["mid"].'"/>';
+					echo '<input type="hidden" class="message_info'.$i.'" name="mtype" value="'.$message[$i]["mtype"].'"/>';
+					echo '<input type="hidden" class="message_info'.$i.'" name="mtid" value="'.$message[$i]["mtid"].'"/>';
+					echo '<input type="submit" class="message_info'.$i.'" value="Agree"/>';
+					echo '</form>';
+
+					echo '<form method="post" action="__ROOT__/index.php/Task/disagreeCancelTask">';
+					echo '<input type="hidden" class="message_info'.$i.'" name="mid" value="'.$message[$i]["mid"].'"/>';
+					echo '<input type="hidden" class="message_info'.$i.'" name="msid" value="'.$message[$i]["msid"].'"/>';
+					echo '<input type="hidden" class="message_info'.$i.'" name="mtype" value="'.$message[$i]["mtype"].'"/>';
+					echo '<input type="hidden" class="message_info'.$i.'" name="mtid" value="'.$message[$i]["mtid"].'"/>';
+					echo '<input type="submit" class="message_info'.$i.'" value="Disagree"/>';
+					echo '</form>';
 				}
 				echo '</div></td></tr>';
 			}
