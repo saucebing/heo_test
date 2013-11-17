@@ -48,6 +48,15 @@
 			?>
 			});
 		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			<?php
+			$RankingCount = $ranking_count[0]["count"];
+			for($i = 0 ; $i < $RankingCount ; $i ++)
+				echo '$(".ranking_toggle'.$i.'").click(function(){$(".ranking_info'.$i.'").slideToggle();});';
+			?>
+			});
+		</script>
 		<style type="text/css">
 			<?php
 			$Count = $count[0]["count"];
@@ -67,6 +76,13 @@
 			$MessageCount = $message_count[0]["count"];
 			for($i = 0 ; $i < $MessageCount ; $i ++)
 			echo '.message_info'.$i.'{display:None;}';
+			?>
+		</style>
+		<style type="text/css">
+			<?php
+			$RankingCount = $ranking_count[0]["count"];
+			for($i = 0 ; $i < $RankingCount ; $i ++)
+			echo '.ranking_info'.$i.'{display:None;}';
 			?>
 		</style>
 	</head>
@@ -244,5 +260,42 @@
 			echo "</table>";
 		?>
 		<br/>
+		<hr/>
+		<button type="button" id="viewRankingList">View Ranking List</button>
+		<?php
+			echo '<table id="ranking_list">';
+			$RankingCount = $ranking_count[0]["count"];
+			for($i = 0 ; $i < $RankingCount ; $i ++)
+			{
+				echo '<tr class="ranking_tr"><td class="ranking_td"><div>';
+				echo '<p class="ranking_toggle'.$i.'">Username:'.$ranking[$i]["username"].'</p>';
+				echo '<p class="ranking_info'.$i.'">Gender: '.$ranking[$i]["gender"].'</p>';
+				echo '<p class="ranking_info'.$i.'">Email:'.$ranking[$i]["email"].'</p>';
+				echo '<p class="ranking_info'.$i.'">Area: '.$ranking[$i]["area"].'</p>';
+				echo '<p class="ranking_info'.$i.'">GPP: '.$ranking[$i]["gpp"].'</p>';
+				if($ranking[$i]["uid"] != $_SESSION["uid"])
+				{
+					echo '<form method="post" action="__ROOT__/index.php/Message/sendMessage">';
+					echo '<input type="text" class="ranking_info'.$i.'" name="content"/>';
+					echo '<input type="hidden" class="ranking_info'.$i.'" name="msid" value="'.$_SESSION["uid"].'"/>';
+					echo '<input type="hidden" class="ranking_info'.$i.'" name="mrid" value="'.$ranking[$i]["uid"].'"/>';
+					echo '<input type="hidden" class="ranking_info'.$i.'" name="mtid" value="-1"/>';
+					echo '<input type="hidden" class="ranking_info'.$i.'" name="mtype" value="1000"/>';
+					echo '<input type="submit" class="ranking_info'.$i.'" value="send"/>';
+					echo '</form>';
+				}
+				echo '</div></td></tr>';
+			}
+			echo "</table>";
+		?>
+		<br/>
+		<hr/>
+		<form method="post" action="../Feedback/feedback">
+			Please input your advice:
+			<input type="text" name="content"/>
+			<input type="submit" value="Feed Back"/>
+		</form>
+		<br/>
+		<hr/>
 	</body>
 </html>

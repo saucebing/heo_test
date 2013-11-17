@@ -27,3 +27,9 @@ function checkMessage()
 		});
 	t = setTimeout("checkMessage()",3000);
 }
+
+$(document).ready(function(){
+			$("#viewRankingList").click(function(){
+				window.location.href="../Ranking/viewRankingList";
+				});
+			});
