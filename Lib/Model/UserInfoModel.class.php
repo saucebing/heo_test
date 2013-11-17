@@ -1,5 +1,5 @@
 <?php
-class CustomerModel extends Model{
+class UserInfoModel extends Model{
 	protected $_validate = array(
 		array('username','require','No Username'),
 		array('username','','Account exits',0,'unique',1),

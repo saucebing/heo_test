@@ -1,8 +1,8 @@
-<?php if (!defined('THINK_PATH')) exit();?><html>
+<html>
 <head>
-<link rel="stylesheet" type="text/css" href="__ROOT__/Common/css/Register_index.css"/>
-<script src="__ROOT__/Common/js/jquery-2.0.2.js"></script>
-<script src="__ROOT__/Common/js/Register_index.js"></script>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Public/css/Register_registerForm.css"/>
+<script src="__ROOT__/Public/js/jquery-2.0.2.js"></script>
+<script src="__ROOT__/Public/js/Register_registerForm.js"></script>
 </head>
 <body id="body1">
 <div id="div1">

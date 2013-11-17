@@ -4,13 +4,15 @@ class LoginAction extends Action{
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 		$Login = new Model();
-		if($Data = $Login->query("select password from think_customer where username=".$username))
+		$Data = $Login->query('select uid,password from think_user_info where username="'.$username.'"');
+		echo "123" == 123;
+		if($Data)
 		{
 			$Password = $Data[0]["password"];
 			if($Password == $password)
 			{
 				session_start();
-				$_SESSION["username"] = $username;
+				$_SESSION["uid"] = $Data[0]["uid"];
 				$_SESSION["login"] = 1;
 				$this->success("Login successfully","../Index/index");
 			}

@@ -1,12 +1,12 @@
 <?php
 class RegisterAction extends Action{
 	public function register(){
-		$Register = D('Customer');
+		$Register = D('UserInfo');
 		if($Register->create())
 		{
 			if($Register->add())
 			{
-				$this->success("Operate successfully","../Login/index");
+				$this->success("Operate successfully","../Login/loginForm");
 			}
 			else
 			{
