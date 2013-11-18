@@ -11,6 +11,10 @@
 		</script>
 	</head>
 	<body>
+		<h1>SYSU Service System</h1>
+		<br/>
+		<hr/>
+		<h4>User Info Form:</h4>
 		<div id="div1">
 		<?php
 			echo '<h3 id="username">user:';
@@ -26,6 +30,8 @@
 		<button id="logout" type="button">Log out</button>
 		<button id="poseTask" type="button">Pose Task</button>
 		<br/>
+		<hr/>
+		<h4>Search Task Form:</h4>
 		<form method="post" action="__ROOT__/index.php/Task/viewTask">
 		Type:
 		<select name="type">
@@ -57,6 +63,7 @@
 		?>
 		<br/>
 		<hr/>
+		<h4>Search User Form:</h4>
 		Search Key:
 		<form method="post" action="../Task/searchUser">
 			<input type="text" id="user" name="user" value=""/>
@@ -67,6 +74,7 @@
 		?>
 		<br/>
 		<hr/>
+		<h4>View Message Form:</h4>
 		<p id="p_new_message">You have new message</p>
 		<button type="button" id="viewMessage">View Message</button>
 		<?php
@@ -74,12 +82,14 @@
 		?>
 		<br/>
 		<hr/>
+		<h4>View Ranking List Form:</h4>
 		<button type="button" id="viewRankingList">View Ranking List</button>
 		<?php
 			R('Display/ranking_list',array($ranking_count,$ranking));
 		?>
 		<br/>
 		<hr/>
+		<h4>Feedback Form:</h4>
 		<form method="post" action="../Feedback/feedback">
 			Please input your advice:
 			<input type="text" name="content"/>
