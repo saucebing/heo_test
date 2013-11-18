@@ -29,7 +29,7 @@
 
 		public function receiveTask()
 		{
-			$TID = $_GET["tid"];
+			$TID = $_POST["tid"];
 			$SQL = new Model();
 			$sql = 'select pid,rid from think_task_info where tid ="'.$TID.'"';
 			$Data = $SQL->query($sql);
@@ -99,7 +99,7 @@
 
 		public function deleteTask()
 		{
-			$TID = $_GET["tid"];
+			$TID = $_POST["tid"];
 			$SQL = new Model();
 			$sql = 'delete from think_task_info where tid = "'.$TID.'"';
 			$result = $SQL->execute($sql);

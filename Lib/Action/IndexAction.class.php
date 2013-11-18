@@ -15,6 +15,8 @@ class IndexAction extends Action {
 		session_start();
 		unset($_SESSION["login"]);
 		unset($_SESSION["uid"]);
+		unset($_SESSION["username"]);
+		unset($_SESSION["gpp"]);
 		session_destroy();
 		$this->error('You has not logined','../Login/loginForm');
 	}

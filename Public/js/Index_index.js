@@ -33,3 +33,99 @@ $(document).ready(function(){
 				window.location.href="../Ranking/viewRankingList";
 				});
 			});
+
+function activate_task_toggle(task_list_number)
+{
+	for(i = 0 ; i < task_list_number ; i ++)
+	{
+		$(".task_toggle" + i).click((function(j)
+			{
+				return function()
+				{
+					$(".task_info" + j).slideToggle();
+				}
+			})(i));
+	}
+}
+
+function activate_user_toggle(user_list_number)
+{
+	for(i = 0 ; i < user_list_number ; i ++)
+	{
+		$(".user_toggle" + i).click((function(j)
+			{
+				return function()
+				{
+					$(".user_info" + j).slideToggle();
+				}
+			})(i));
+	}
+}
+
+function activate_message_toggle(message_list_number)
+{
+	for(i = 0 ; i < message_list_number ; i ++)
+	{
+		$(".message_toggle" + i).click((function(j)
+			{
+				return function()
+				{
+					$(".message_info" + j).slideToggle();
+				}
+			})(i));
+	}
+}
+
+function activate_ranking_toggle(ranking_list_number)
+{
+	for(i = 0 ; i < ranking_list_number ; i ++)
+	{
+		$(".ranking_toggle" + i).click((function(j)
+			{
+				return function()
+				{
+					$(".ranking_info" + j).slideToggle();
+				}
+			})(i));
+	}
+}
+
+function hide_task_list(task_list_number){
+	for(i = 0 ; i < task_list_number ; i ++)
+	{
+		$(".task_info" + i).css("display","None");
+	}
+}
+
+function hide_user_list(task_user_number){
+	for(i = 0 ; i < task_user_number ; i ++)
+	{
+		$(".user_info" + i).css("display","None");
+	}
+}
+
+function hide_message_list(message_list_number){
+	for(i = 0 ; i < message_list_number ; i ++)
+	{
+		$(".message_info" + i).css("display","None");
+	}
+}
+
+function hide_ranking_list(ranking_list_number){
+	for(i = 0 ; i < ranking_list_number ; i ++)
+	{
+		$(".ranking_info" + i).css("display","None");
+	}
+}
+
+function init_list(task_list_number,user_list_number,message_list_number,ranking_list_number)
+{
+	activate_task_toggle(task_list_number);
+	activate_user_toggle(user_list_number);
+	activate_message_toggle(message_list_number);
+	activate_ranking_toggle(ranking_list_number);
+	hide_task_list(task_list_number);
+	hide_user_list(user_list_number);
+	hide_message_list(message_list_number);
+	hide_ranking_list(ranking_list_number);
+}
