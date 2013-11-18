@@ -114,6 +114,30 @@ INSERT INTO `think_data` VALUES (1,'thinkphp'),(2,'php'),(3,'framework');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `think_feedback`
+--
+
+DROP TABLE IF EXISTS `think_feedback`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `think_feedback` (
+  `uid` int(8) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `think_feedback`
+--
+
+LOCK TABLES `think_feedback` WRITE;
+/*!40000 ALTER TABLE `think_feedback` DISABLE KEYS */;
+INSERT INTO `think_feedback` VALUES (9,'at','Good!'),(9,'at','Good!'),(9,'at','You can do it better!'),(9,'at','Yes,you can.'),(9,'at','');
+/*!40000 ALTER TABLE `think_feedback` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `think_info`
 --
 
@@ -153,7 +177,7 @@ CREATE TABLE `think_message` (
   `mtype` varchar(8) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`mid`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +186,7 @@ CREATE TABLE `think_message` (
 
 LOCK TABLES `think_message` WRITE;
 /*!40000 ALTER TABLE `think_message` DISABLE KEYS */;
-INSERT INTO `think_message` VALUES (1,9,7,-1,'1000','Hello!'),(2,9,7,-1,'1000','Can you receive my message?'),(3,9,6,-1,'1000','eee'),(4,6,8,36,'10','Cancel Posed Task'),(9,7,9,-1,'1001','You are a fool.'),(8,7,3,-1,'1000','werwedfs');
+INSERT INTO `think_message` VALUES (1,9,7,-1,'1000','Hello!'),(2,9,7,-1,'1000','Can you receive my message?'),(3,9,6,-1,'1000','eee'),(4,6,8,36,'10','Cancel Posed Task'),(9,7,9,-1,'1001','You are a fool.'),(8,7,3,-1,'1000','werwedfs'),(22,15,9,-1,'1001','小蓝啦啦啦'),(20,14,9,-1,'1001','159357'),(21,9,14,-1,'1001','eee'),(23,9,15,-1,'1001','cao!'),(24,15,9,-1,'1001','heehehhehehe'),(25,9,15,-1,'1001','还可以输中文'),(27,9,15,48,'20','Cancel Received Task');
 /*!40000 ALTER TABLE `think_message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +235,7 @@ CREATE TABLE `think_task_info` (
   `status` varchar(255) DEFAULT 'New Pose',
   `taskgpp` int(8) DEFAULT NULL,
   PRIMARY KEY (`tid`)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +244,7 @@ CREATE TABLE `think_task_info` (
 
 LOCK TABLES `think_task_info` WRITE;
 /*!40000 ALTER TABLE `think_task_info` DISABLE KEYS */;
-INSERT INTO `think_task_info` VALUES (36,6,8,'Fetch the express','buy an apple','please help me buy an apple','m','no','New Pose',2),(44,9,-1,'Fetch the express','I want to travel','Who can go with me?','m','','New Pose',2),(38,8,9,'Pack a meal','PackAMeal','帮我打包～　　至　慎六　３０8','m','thank you very much','Received',1),(39,8,11,'Fetch the express','组队吃宵夜～　今晚10:45','一起去贝岗吃宵夜，有么？　10:45p.m.','m','来吧～　','Received',0),(41,9,-1,'Pack a meal','I want a bowl of noodle.','Please help me.','m','I will give you money.','New Pose',5),(42,9,-1,'Pack a meal','Tell me a joke','Let me laugh','m','Nothing else.','New Pose',6),(45,9,-1,'Fetch the express','test','test','m','test','New Pose',2),(46,9,-1,'Fetch the express','test2','test2','m','','New Pose',0);
+INSERT INTO `think_task_info` VALUES (36,6,8,'Fetch the express','buy an apple','please help me buy an apple','m','no','New Pose',2),(44,9,14,'Fetch the express','I want to travel','Who can go with me?','m','','Received',2),(38,8,9,'Pack a meal','PackAMeal','帮我打包～　　至　慎六　３０8','m','thank you very much','Received',1),(39,8,11,'Fetch the express','组队吃宵夜～　今晚10:45','一起去贝岗吃宵夜，有么？　10:45p.m.','m','来吧～　','Received',0),(41,9,-1,'Pack a meal','I want a bowl of noodle.','Please help me.','m','I will give you money.','New Pose',5),(42,9,-1,'Pack a meal','Tell me a joke','Let me laugh','m','Nothing else.','New Pose',6),(45,9,-1,'Fetch the express','test','test','m','test','New Pose',2),(48,15,9,'Fetch the express','gogogo','gogogo','m','nothing','Received',2);
 /*!40000 ALTER TABLE `think_task_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +288,7 @@ CREATE TABLE `think_user_info` (
   `gpp` int(8) NOT NULL DEFAULT '20',
   `area` varchar(255) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +297,7 @@ CREATE TABLE `think_user_info` (
 
 LOCK TABLES `think_user_info` WRITE;
 /*!40000 ALTER TABLE `think_user_info` DISABLE KEYS */;
-INSERT INTO `think_user_info` VALUES (1,'aaa','aaa','m','abc@q.a',20,''),(2,'bbb','bbb','m','abc@q.a',20,'East Campus'),(3,'123','123','m','abc@q.a',20,'East Campus'),(4,'qqq','qqq','m','abc@q.a',20,'East Campus'),(5,'ttt','ttt','m','abc@q.a',20,'East Campus'),(6,'you','you','m','abc@q.a',20,'East Campus'),(7,'33online','11223344','m','1316267054@qq.com',20,'East Campus'),(8,'eric','eric','m','nameljh@sina.com',20,'East Campus'),(9,'at','at','m','abc@q.a',15,'East Campus'),(-1,'NULL','','','',20,''),(10,'haha','haha','m','abc@q.a',20,'East Campus'),(11,'lala','lala','m','abc@q.a',5,'East Campus'),(12,'ppp','[[[','m','abc@q.a',20,'East Campus'),(13,'rrr','rrr','m','abc@q.a',20,'East Campus');
+INSERT INTO `think_user_info` VALUES (1,'aaa','aaa','m','abc@q.a',20,''),(2,'bbb','bbb','m','abc@q.a',20,'East Campus'),(3,'123','123','m','abc@q.a',20,'East Campus'),(4,'qqq','qqq','m','abc@q.a',20,'East Campus'),(5,'ttt','ttt','m','abc@q.a',20,'East Campus'),(6,'you','you','m','abc@q.a',20,'East Campus'),(7,'33online','11223344','m','1316267054@qq.com',20,'East Campus'),(8,'eric','eric','m','nameljh@sina.com',20,'East Campus'),(9,'at','at','m','abc@q.a',10,'East Campus'),(-1,'NULL','','','',20,''),(10,'haha','haha','m','abc@q.a',20,'East Campus'),(11,'lala','lala','m','abc@q.a',5,'East Campus'),(12,'ppp','[[[','m','abc@q.a',20,'East Campus'),(13,'rrr','rrr','m','abc@q.a',20,'East Campus'),(14,'chesternimiz','zxcvb','m','648345005@qq.com',20,'East Campus'),(15,'zhhuab','111','m','111@qq.com',20,'East Campus'),(16,'hehe','hehe','f','a@b.com',100,'East Campus');
 /*!40000 ALTER TABLE `think_user_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -286,4 +310,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-17 18:24:21
+-- Dump completed on 2013-11-18 22:28:28
