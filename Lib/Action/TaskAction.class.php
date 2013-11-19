@@ -88,7 +88,7 @@
 				$where = $where.' and pid ="'.$_SESSION["uid"].'"';
 			if($viewTask == 'View My Received Task')
 				$where = $where.' and rid ="'.$_SESSION["uid"].'"';
-			$select = 'tid,pid,rid,title,description,taskgpp,note,status,poser.username as poser_name,receiver.username as receiver_name';
+			$select = 'tid,pid,rid,title,description,availabletime,accomplishtime,taskgpp,note,status,poser.username as poser_name,receiver.username as receiver_name';
 			$select2 = 'title';
 			$sql = 'select '.$select.' '.$where;
 			$sql2 = 'select count('.$select2.') as count '.$where;

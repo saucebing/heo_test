@@ -9,6 +9,8 @@ class DisplayAction extends Action{
 			echo '<tr class="task_tr"><td class="task_td"><div>';
 			echo '<p class="task_toggle'.$i.'">Task tile:'.$data[$i]["title"].'</p>';
 			echo '<p class="task_info'.$i.'">Task description:'.$data[$i]["description"].'</p>';
+			echo '<p class="task_info'.$i.'">Task available time:'.$data[$i]["availabletime"].'</p>';
+			echo '<p class="task_info'.$i.'">Task accomplish time:'.$data[$i]["accomplishtime"].'</p>';
 			echo '<p class="task_info'.$i.'">Task Poser:'.$data[$i]["poser_name"].'</p>';
 			echo '<p class="task_info'.$i.'">Task GPP:'.$data[$i]["taskgpp"].'</p>';
 			echo '<p class="task_info'.$i.'">Task Note:'.$data[$i]["note"].'</p>';

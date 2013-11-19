@@ -20,6 +20,12 @@
 	Description:
 	<input type="text" name="description"/>
 	<br/>
+	Task Available Time:
+	<input type="datetime-local" id="availabletime" step="1" name="availabletime"/>
+	<br/>
+	Task Accomplish Time:
+	<input type="datetime-local" id="accomplishtime" step="1" name="accomplishtime"/>
+	<br/>
 	Receiver Gender:
 	Male<input type="radio" name="rgender" value="m" checked="checked"/>
 	Female<input type="radio" name="rgender" value="f" />
