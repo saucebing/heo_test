@@ -27,6 +27,7 @@
 		</div>
 		<br/>
 		Welcome!
+		<button id="index" type="button">Index</button>
 		<button id="logout" type="button">Log out</button>
 		<button id="poseTask" type="button">Pose Task</button>
 		<br/>
@@ -95,6 +96,10 @@
 			<input type="text" name="content"/>
 			<input type="submit" value="Feed Back"/>
 		</form>
+		<br/>
+		<hr/>
+		<h4>Submiss Form</h4>
+		<button type="button" id="submiss">Submiss</button>
 		<br/>
 		<hr/>
 	</body>

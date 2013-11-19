@@ -129,3 +129,15 @@ function init_list(task_list_number,user_list_number,message_list_number,ranking
 	hide_message_list(message_list_number);
 	hide_ranking_list(ranking_list_number);
 }
+
+$(document).ready(function(){
+		$("#submiss").click(function(){
+			window.location.href="../Submiss/submissForm";
+			});
+		});
+
+$(document).ready(function(){
+		$("#index").click(function(){
+			window.location.href="../Index/index";
+			});
+		});
