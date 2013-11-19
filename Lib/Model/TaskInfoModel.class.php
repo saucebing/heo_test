@@ -5,20 +5,26 @@ class TaskInfoModel extends Model{
 		array('title','require','No Task Title'),
 		array('availabletime','require','No Available Time'),
 		array('accomplishtime','require','No Accomplish Time'),
-		array('accomplishtime','checkTime','Accomplish time must be later than available time'),
+		array('accomplishtime','checkTime1','Accomplish time must be later than available time',0,'function'),
+		array('accomplishtime','checkTime2','Available time must be later than now',0,'function'),
 		array('taskgpp','number','GPP must be a number'),
 		array('taskgpp','checkGPP','Your GPP is not enough',0,'function'),
 		);
 }
-function checkTime()
+function checkTime1()
 {
-	return true;
-	/*
 	if(strtotime($_POST["availabletime"]) < strtotime($_POST["accomplishtime"]))
 		return true;
 	else
 		return false;
-		*/
+}
+
+function checkTime2()
+{
+	if(strtotime(date("Y-m-d H:i:s")) < strtotime($_POST["availabletime"]))
+		return true;
+	else
+		return false;
 }
 
 function checkGPP()

@@ -19,21 +19,21 @@ class DisplayAction extends Action{
 			{
 				echo '<p class="task_info'.$i.'">Task Receiver:'.$data[$i]["receiver_name"].'</p>';
 			}
-			if($data[$i]["rid"] == -1 && $data[$i]["pid"] != $_SESSION["uid"])
+			if($data[$i]["rid"] == -1 && $data[$i]["pid"] != $_SESSION["uid"] && $date[$i]["status"] == "Now Pose")
 			{
 				echo '<form method="post" action="__ROOT__/index.php/Task/receiveTask">';
 				echo '<input type="hidden" class="task_info'.$i.'" name="tid" value="'.$data[$i]["tid"].'"/>';
 				echo '<input type="submit" class="task_info'.$i.'" value="Receive This Task"/>';
 				echo '</form>';
 			}
-			else if($data[$i]["pid"] == $_SESSION["uid"] && $data[$i]["rid"] == -1)
+			else if($data[$i]["pid"] == $_SESSION["uid"] && $data[$i]["rid"] == -1 && $data[$i]["status"] != "Accomplished")
 			{
 				echo '<form method="post" action="__ROOT__/index.php/Task/deleteTask">';
 				echo '<input type="hidden" class="task_info'.$i.'" name="tid" value="'.$data[$i]["tid"].'"/>';
 				echo '<input type="submit" class="task_info'.$i.'" value="Delete This Task"/>';
 				echo '</form>';
 			}
-			else if($data[$i]["pid"] == $_SESSION["uid"] && $data[$i]["rid"] != -1)
+			else if($data[$i]["pid"] == $_SESSION["uid"] && $data[$i]["rid"] != -1 && $data[$i]["status"] == "Received")
 			{
 				echo '<form method="post" action="__ROOT__/index.php/Message/sendMessage">';
 				echo '<input type="hidden" class="task_info'.$i.'" name="content" value="Cancel Posed Task"/>';
@@ -43,8 +43,13 @@ class DisplayAction extends Action{
 				echo '<input type="hidden" class="task_info'.$i.'" name="mtype" value="10"/>';
 				echo '<input type="submit" class="task_info'.$i.'" value="Cancel Posed Task"/>';
 				echo '</form>';
+
+				echo '<form method="post" action="__ROOT__/index.php/Task/accomplishTask">';
+				echo '<input type="hidden" class="task_info'.$i.'" name="tid" value="'.$data[$i]["tid"].'"/>';
+				echo '<input type="submit" class="task_info'.$i.'" value="Accompish Task"/>';
+				echo '</form>';
 			}
-			else if($data[$i]["rid"] == $_SESSION["uid"])
+			else if($data[$i]["rid"] == $_SESSION["uid"] && $data[$i]["status"] == "Received")
 			{
 				echo '<form method="post" action="__ROOT__/index.php/Message/sendMessage">';
 				echo '<input type="hidden" class="task_info'.$i.'" name="content" value="Cancel Received Task"/>';
@@ -55,6 +60,15 @@ class DisplayAction extends Action{
 				echo '<input type="submit" class="task_info'.$i.'" value="Cancel Received Task"/>';
 				echo '</form>';
 			}
+
+			echo '<form method="post" action="__ROOT__/index.php/Prosecute/prosecute">';
+			echo '<input type="hidden" class="task_info'.$i.'" name="prosid" value="'.$_SESSION["uid"].'"/>';
+			echo '<input type="hidden" class="task_info'.$i.'" name="prorid" value="-1"/>';
+			echo '<input type="hidden" class="task_info'.$i.'" name="protid" value="'.$data[$i]["tid"].'"/>';
+			echo '<input type="text" class="task_info'.$i.'" name="proreason" value=""/>';
+			echo '<input type="submit" class="task_info'.$i.'" value="Prosecute This Task"/>';
+			echo '</form>';
+
 			echo '</div></td></tr>';
 		}
 		echo '</table>';
@@ -83,6 +97,15 @@ class DisplayAction extends Action{
 				echo '<input type="submit" class="user_info'.$i.'" value="send"/>';
 				echo '</form>';
 			}
+
+			echo '<form method="post" action="__ROOT__/index.php/Prosecute/prosecute">';
+			echo '<input type="hidden" class="user_info'.$i.'" name="prosid" value="'.$_SESSION["uid"].'"/>';
+			echo '<input type="hidden" class="user_info'.$i.'" name="prorid" value="'.$user[$i]["uid"].'"/>';
+			echo '<input type="hidden" class="user_info'.$i.'" name="protid" value="-1"/>';
+			echo '<input type="text" class="user_info'.$i.'" name="proreason" value=""/>';
+			echo '<input type="submit" class="user_info'.$i.'" value="Prosecute This Task"/>';
+			echo '</form>';
+
 			echo '</div></td></tr>';
 		}
 		echo "</table>";

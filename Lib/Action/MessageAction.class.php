@@ -23,7 +23,7 @@ class MessageAction extends Action
 			}
 			else
 			{
-				$this->error("Operate error");
+				$this->error($Data->getError());
 			}
 		}
 		else

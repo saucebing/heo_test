@@ -18,7 +18,7 @@
 				}
 				else
 				{
-					$this->error("Operate error");
+					$this->error($Data->getError());
 				}
 			}
 			else
@@ -180,6 +180,22 @@
 				$this->error("error","__ROOT__/index.php/Index/index");
 			}
 			
+		}
+
+		public function accomplishTask()
+		{
+			$TID = $_POST["tid"];
+			$SQL = new Model();
+			$sql = 'update think_task_info set status = "Accomplished" where tid = "'.$TID.'"';
+			$result = $SQL->execute($sql);
+			if($result)
+			{
+				$this->success("Task Accomplished","__ROOT__/index.php/Index/index");
+			}
+			else
+			{
+				$this->error("error","__ROOT__/index.php/Index/index");
+			}
 		}
     }
 ?>
