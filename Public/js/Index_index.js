@@ -141,3 +141,10 @@ $(document).ready(function(){
 			window.location.href="../Index/index";
 			});
 		});
+
+$(document).ready(function(){
+		$("#displayViewTask").click(function(){
+			$(".list_div").hide();
+			$("#task_div").show();
+			});
+		});
