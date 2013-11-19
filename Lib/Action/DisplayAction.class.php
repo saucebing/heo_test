@@ -19,7 +19,7 @@ class DisplayAction extends Action{
 			{
 				echo '<p class="task_info'.$i.'">Task Receiver:'.$data[$i]["receiver_name"].'</p>';
 			}
-			if($data[$i]["rid"] == -1 && $data[$i]["pid"] != $_SESSION["uid"] && $date[$i]["status"] == "Now Pose")
+			if($data[$i]["rid"] == -1 && $data[$i]["pid"] != $_SESSION["uid"] && strcmp($date[$i]["status"],"New Pose"))
 			{
 				echo '<form method="post" action="__ROOT__/index.php/Task/receiveTask">';
 				echo '<input type="hidden" class="task_info'.$i.'" name="tid" value="'.$data[$i]["tid"].'"/>';
