@@ -143,8 +143,40 @@ $(document).ready(function(){
 		});
 
 $(document).ready(function(){
-		$("#displayViewTask").click(function(){
-			$(".list_div").hide();
-			$("#task_div").show();
+		$(".list_div").hide();
+		$("#displayViewTaskForm").click(function(){
+			$(".list_div").slideUp('slow');
+			$("#task_div").slideDown('slow');
+			});
+
+		$("#displayPoseTaskForm").click(function(){
+			$(".list_div").slideUp('slow');
+			$("#poseTask_div").slideDown('slow');
+			});
+
+		$("#displaySearchUserForm").click(function(){
+			$(".list_div").slideUp('slow');
+			$("#user_div").slideDown('slow');
+			});
+
+		$("#displayMessageForm").click(function(){
+			$(".list_div").slideUp('slow');
+			$("#message_div").slideDown('slow');
+			});
+
+		$("#displayRankingForm").click(function(){
+			$(".list_div").slideUp('slow');
+			$("#ranking_div").slideDown('slow');
+			});
+
+		$("#displayFeedbackForm").click(function(){
+			$(".list_div").slideUp('slow');
+			$("#feedback_div").slideDown('slow');
+			});
+
+		$("#displaySubmissForm").click(function(){
+			$(".list_div").slideUp('slow');
+			$("#submiss_div").slideDown('slow');
 			});
 		});
+

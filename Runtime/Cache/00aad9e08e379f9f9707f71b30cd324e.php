@@ -63,13 +63,65 @@
 				<div class="col-lg-2">
 					<div class="sidebar-nav">
 					<ul class="nav nav-pills nav-stacked">
-					<li class="nav-li"><a id="poseTask" href="#">Pose Task</a></li>
-					<li class="nav-li"><a id="displayViewTask" href="#">View Task</a></li>
-					<li class="nav-li"><a id="submiss" href="#">Submiss</a></li>
+					<li class="nav-li"><a id="displayPoseTaskForm" href="#">Pose Task</a></li>
+					<li class="nav-li"><a id="displayViewTaskForm" href="#">View Task</a></li>
+					<li class="nav-li"><a id="displaySearchUserForm" href="#">Search User</a></li>
+					<li class="nav-li"><a id="displayMessageForm" href="#">View Message</a></li>
+					<li class="nav-li"><a id="displayRankingForm" href="#">View Ranking</a></li>
+					<li class="nav-li"><a id="displaySubmissForm" href="#">Submiss</a></li>
+					<li class="nav-li"><a id="displayFeedbackForm" href="#">Feedback Us</a></li>
 					</ul>
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div id="div1" class="col-lg-6">
+					Welcome
+					<div id="poseTask_div" class="list_div">
+						<div>
+						<form method="post" action="__URL__/poseTask" class="form-signin">
+							<div class="form-control">
+							<label class="label-control">Title&nbsp&nbsp</label>
+							<input type="text" name="title" require>
+							</div>
+							<div class="form-control">
+							<label class="label-control">Desp</label>
+							<input type="text" name="description">
+							</div>
+							<div class="form-control">
+							<label class="label-control">Task Type</label>
+							<select name="type"/>
+								<option value="Fetch the express">Fetch the express</option>
+								<option value="Pack a meal">Pack a meal</option>
+							</select>
+							</div>
+							<div class="form-control">
+							<label class="label-control"> Available Time</label>
+							<input type="datetime-local" id="availabletime" step="1" name="availabletime"/>
+							</div>
+							<div class="form-control">
+							<label class="label-control"> Accomplish Time</label>
+							<input type="datetime-local" id="accomplishtime" step="1" name="accomplishtime"/>
+							</div>
+							<div class="form-control">
+							<label class="label-control">Receiver Gender</label>
+							<input type="radio" name="rgender" value="m" checked="checked"/>
+							Male
+							<input type="radio" name="rgender" value="f" />
+							Female
+							</div>
+							<div class="form-control">
+							<label class="label-control">GPP</label>
+							<input type="text" name="taskgpp" value="0"/>
+							</div>
+							<div class="form-control">
+							<label class="label-control">Note</label>
+							<input type="text" name="note"/>
+							</div>
+							<?php
+ echo '<input type="hidden" name="pid" value="'.$_SESSION["uid"].'"/>'; ?>
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Pose Task</button>
+						</form>
+						</div>
+					</div>
 					<div id="task_div" class="list_div">
 						<form method="post" action="__ROOT__/index.php/Task/viewTask">
 						Type:
@@ -139,8 +191,15 @@
 						<input type="submit" value="Feed Back"/>
 					</form>
 					</div>
+					<div id="submiss_div" class="list_div">
+						Submiss Form
+						<form method="post" action="__URL__/submiss">
+							<textarea shape="rect" name="subcontent" cols="60" rows="40"/></textarea>
+							<input type="submit" value="Submiss"/>
+						</form>
 				</div>
 				<div class="col-lg-4">
+					Welcome to SYSU
 				</div>
 			</div>
 		</div>
