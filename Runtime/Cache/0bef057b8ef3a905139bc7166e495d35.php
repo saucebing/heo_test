@@ -12,7 +12,7 @@
 	<h2 class="form-signin-heading">Login Form</h2>
 	<input type="text" class="form-control" name="username" placeholder="Username" require autofocus>
 	<input type="password" class="form-control" name="password" placeholder="Password" require>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+	<button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
 	<button class="btn btn-lg btn-primary btn-block" id="register" type="button">Register</button>
 </form>
 </div>

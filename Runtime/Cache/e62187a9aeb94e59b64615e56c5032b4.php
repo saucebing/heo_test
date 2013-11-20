@@ -34,7 +34,7 @@
 		<option value="Zhuhai Campus">Zhuhai Campus</option>
 	</select>
 	</div>
-	<button class="btn btn-lg btn-primary btn-block" type="submit" value="Register">Register</button>
+	<button class="btn btn-lg btn-success btn-block" type="submit" value="Register">Register</button>
 	<button class="btn btn-lg btn-primary btn-block" id="login" type="button">Login</button>
 </form>
 </div>

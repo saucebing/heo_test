@@ -11,6 +11,17 @@ class IndexAction extends Action {
 			$this->error('You has not logined','../Login/loginForm');
     }
 
+	public function home()
+	{
+		session_start();
+		if(isset($_SESSION["login"]) && $_SESSION["login"] == 1)
+		{
+			$this->display("Index/index");
+		}
+		else
+			$this->error('You has not logined','../Login/loginForm');
+	}
+
 	public function logout(){
 		session_start();
 		unset($_SESSION["login"]);
