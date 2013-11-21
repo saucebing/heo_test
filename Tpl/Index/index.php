@@ -8,13 +8,13 @@
 		<script type="text/javascript">
 			$(document).ready(function()
 			{
-				init_list({$count.0.count|default=0},{$user_count.0.count|default=0},{$message_count.0.count|default=0},{$ranking_count.0.count|default=0});
+				init_list({$count.0.count|default=0},{$user_count.0.count|default=0},{$message_count.0.count|default=0},{$ranking_count.0.count|default=0},"{$panel}");
 			});
 		</script>
 	</head>
 	<body>
 		<div>
-			<nav class="navbar navbar-default" role="navigation">
+			<nav class="navbar navbar-default my_nav" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -23,13 +23,13 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="../Index/home">SYSU HEO</a>
+			<a class="navbar-brand" href="../Index/index">SYSU HEO</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-			<li class="active"><a href="../Index/home">Home</a></li>
+			<li class="active"><a href="../Index/index">Home</a></li>
 			<li><a href="#">User Center</a></li>
 			<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Function<b class="caret"></b></a>
@@ -54,9 +54,9 @@
 			<button type="submit" class="btn btn-default">Search Task</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
-			<li><a href="#"><h4>{$_SESSION.username}</h4></a></li>
-			<li><a href="#"><h4>{$_SESSION.gpp}</h4></a></li>
-			<li><a id="logout" href="#"><h4>Logout</h4></a></li>
+			<li><a href="#">{$_SESSION.username}</a></li>
+			<li><a href="#">{$_SESSION.gpp}</a></li>
+			<li><a id="logout" href="#">Logout</a></li>
 			</ul>
 			</div><!-- /.navbar-collapse -->
 			</nav>
@@ -77,10 +77,7 @@
 					</div>
 				</div>
 				<div id="div1" class="col-lg-6">
-					<div class="container">
-						<h1>{$Welcome}</h1>
-					</div>
-					<div id="poseTask_div" class="list_div">
+					<div class="poseTask_div list_div">
 						<div>
 						<form method="post" action="../Task/poseTask" class="form-horizontal">
 							<div class="form-group">
@@ -107,13 +104,13 @@
 							<div class="form-group">
 							<label class="control-label col-sm-2"> Available Time</label>
 							<div class="col-sm-10">
-							<input type="datetime-local" class="form-control" id="availabletime" step="1" name="availabletime"/>
+							<input type="datetime-local" id="availabletime" step="1" name="availabletime"/>
 							</div>
 							</div>
 							<div class="form-group">
 							<label class="control-label col-sm-2"> Accomplish Time</label>
 							<div class="col-sm-10">
-							<input type="datetime-local" class="form-control" id="accomplishtime" step="1" name="accomplishtime"/>
+							<input type="datetime-local" id="accomplishtime" step="1" name="accomplishtime"/>
 							</div>
 							</div>
 							<div class="form-group">
@@ -152,7 +149,7 @@
 						</form>
 						</div>
 					</div>
-					<div id="task_div" class="list_div">
+					<div class="task_div list_div">
 						<form method="post" action="__ROOT__/index.php/Task/viewTask" class="form-horizontal">
 							<div class="form-group">
 							<label class="control-label col-sm-2">Type</label>
@@ -191,7 +188,7 @@
 							R('Display/task_list',array($count,$data));
 						?>
 					</div>
-					<div id="user_div" class="list_div">
+					<div class="user_div list_div">
 					<form method="post" action="../Task/searchUser" class="form-horizontal">
 						<div class="form-group">
 							<label class="control-label col-sm-2">Search Key</label>
@@ -205,32 +202,57 @@
 						R('Display/user_list',array($user_count,$user));
 					?>
 					</div>
-					<div id="message_div" class="list_div">
+					<div class="message_div list_div">
 					<p id="p_new_message">You have new message</p>
 					<?php
 						R('Display/message_list',array($message_count,$message));
 					?>
 					</div>
-					<div id="ranking_div" class="list_div">
+					<div class="ranking_div list_div">
 					<?php
 						R('Display/ranking_list',array($ranking_count,$ranking));
 					?>
 					</div>
-					<div id="feedback_div" class="list_div">
+					<div class="submiss_div list_div">
+						<form method="post" action="../Submiss/submiss" class="form-horizontal">
+							<label class="control-label">Please input your articles</label>
+							<textarea shape="circle" name="subcontent" rows="10" class="form-control"/></textarea>
+							<button class="btn btn-lg btn-primary" type="submit">Submiss</button>
+						</form>
+					</div>
+					<div class="feedback_div list_div">
 					<form method="post" action="../Feedback/feedback" class="form-horizontal">
 						<label class="control-label">Please input your advice</label>
 						<textarea shape="circle" name="content" rows="10" class="form-control"/></textarea>
 						<button class="btn btn-lg btn-info" type="submit">Feedback</button>
 					</form>
 					</div>
-					<div id="submiss_div" class="list_div">
-						<form method="post" action="../Submiss/submiss" class="form-horizontal">
-							<label class="control-label">Please input your articles</label>
-							<textarea shape="circle" name="subcontent" rows="10" class="form-control"/></textarea>
-							<button class="btn btn-lg btn-primary" type="submit">Submiss</button>
-						</form>
 				</div>
 				<div class="col-lg-4">
+					<div class="alert alert-success alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+					&times;
+					</button>
+						<h3>Welcome to SYSU HEO</h3>
+					</div>
+					<div class="alert alert-warning alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+					&times;
+					</button>
+						<h3>The more I help others to succeed, the more I succeed.</h3>
+					</div>
+					<div class="alert alert-info alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+					&times;
+					</button>
+						<h3>True happiness comes from helping others.</h3>
+					</div>
+					<div class="alert alert-danger alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+					&times;
+					</button>
+						<h3>We make a living by what we get, but we make a life by what we give.</h3>
+					</div>
 				</div>
 			</div>
 		</div>

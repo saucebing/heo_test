@@ -1,6 +1,19 @@
 <?php
 class FeedbackAction extends Action
 {
+	public function feedbackForm()
+	{
+		session_start();
+		if(isset($_SESSION["login"]) && $_SESSION["login"] == 1)
+		{
+			$PANEL = "feedback";
+			$this->assign('panel',$PANEL);
+			$this->display("Index:index");
+		}
+		else
+			$this->error('You has not logined','../Login/loginForm');
+	}
+
 	public function feedback()
 	{
 		$SQL = new Model();
@@ -14,6 +27,8 @@ class FeedbackAction extends Action
 			$Data = $SQL->execute($sql2);
 			if($Data)
 			{
+				$PANEL = "index";
+				$this->assign('panel',$PANEL);
 				$this->success("Feed back successfully.Thank you!","__ROOT__/index.php/Index/index");
 			}
 			else

@@ -3,7 +3,11 @@
 		public function poseTaskForm(){
 			session_start();
 			if(isset($_SESSION["login"]) && $_SESSION["login"] == 1)
-				$this->display();
+			{
+				$PANEL = "poseTask";
+				$this->assign('panel',$PANEL);
+				$this->display("Index:index");
+			}
 			else
 				$this->error('You has not logined','../Login/loginForm');
 		}
@@ -14,7 +18,9 @@
 			{
 				if($Data->add())
 				{
-					$this->success("Operate successfully","../Index/index");
+					$PANEL = "index";
+					$this->assign('panel',$PANEL);
+					$this->success("Operation successfully","__ROOT__/index.php/Index/index");
 				}
 				else
 				{
@@ -60,6 +66,19 @@
 			//$this->display("Index:index");
 		}
 
+		public function viewTaskForm()
+		{
+			session_start();
+			if(isset($_SESSION["login"]) && $_SESSION["login"] == 1)
+			{
+				$PANEL = "viewTask";
+				$this->assign('panel',$PANEL);
+				$this->display("Index:index");
+			}
+			else
+				$this->error('You has not logined','../Login/loginForm');
+		}
+
 		public function viewTask()
 		{
 			$result = $this->searchTask($_POST["key"],$_POST["type"],$_POST["status"],$_POST["viewTask"]);
@@ -67,8 +86,10 @@
 			$Data = $result[1];
 			if($Data)
 			{
+				$PANEL = "viewTask";
 				$this->assign('data',$Data);
 				$this->assign('count',$count);
+				$this->assign('panel',$PANEL);
 				$this->display("Index:index");
 			}
 			else
@@ -109,6 +130,19 @@
 			}
 		}
 		
+		public function searchUserForm()
+		{
+			session_start();
+			if(isset($_SESSION["login"]) && $_SESSION["login"] == 1)
+			{
+				$PANEL = "searchUser";
+				$this->assign('panel',$PANEL);
+				$this->display("Index:index");
+			}
+			else
+				$this->error('You has not logined','../Login/loginForm');
+		}
+
 		public function searchUser()
 		{
 			$USER = $_POST["user"];
@@ -121,8 +155,10 @@
 			$count = $SQL->query($sql2);
 			if($Data)
 			{
+				$PANEL = "searchUser";
 				$this->assign('user',$Data);
 				$this->assign('user_count',$count);
+				$this->assign('panel',$PANEL);
 				$this->display("Index:index");
 			}
 			else

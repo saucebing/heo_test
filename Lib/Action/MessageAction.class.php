@@ -44,8 +44,10 @@ class MessageAction extends Action
 		$result = $SQL->execute($sql3);
 		if($Data)
 		{
+			$PANEL = "message";
 			$this->assign('message',$Data);
 			$this->assign('message_count',$count);
+			$this->assign('panel',$PANEL);
 			$this->display('Index:index');
 		}
 		else

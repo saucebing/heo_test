@@ -9,8 +9,10 @@ class RankingAction extends Action
 		$count[0]["count"] = 10;
 		if($Data)
 		{
+			$PANEL = "ranking";
 			$this->assign("ranking",$Data);
 			$this->assign("ranking_count",$count);
+			$this->assign('panel',$PANEL);
 			$this->display("Index:index");
 		}
 		else

@@ -5,12 +5,6 @@ $(document).ready(function(){
 			});
 
 $(document).ready(function(){
-			$("#poseTask").click(function(){
-					window.location.href="../Task/poseTaskForm";
-				});
-			});
-
-$(document).ready(function(){
 			$("#viewMessage").click(function(){
 				window.location.href="../Message/viewMessage";
 				});
@@ -118,7 +112,7 @@ function hide_ranking_list(ranking_list_number){
 	}
 }
 
-function init_list(task_list_number,user_list_number,message_list_number,ranking_list_number)
+function init_list(task_list_number,user_list_number,message_list_number,ranking_list_number,panel)
 {
 	activate_task_toggle(task_list_number);
 	activate_user_toggle(user_list_number);
@@ -129,14 +123,23 @@ function init_list(task_list_number,user_list_number,message_list_number,ranking
 	hide_message_list(message_list_number);
 	hide_ranking_list(ranking_list_number);
 	$(".list_div").hide();
-	if(task_list_number != 0)
-		$("#task_div").slideDown('slow');
-	else if(user_list_number != 0)
-		$("#user_div").slideDown('slow');
-	else if(message_list_number != 0)
-		$("#message_div").slideDown('slow');
-	else if(ranking_list_number != 0)
-		$("#ranking_div").slideDown('slow');
+	if(panel == "poseTask")
+		$(".poseTask_div").slideDown('slow');
+	else if(panel == "viewTask")
+		$(".task_div").slideDown('slow');
+	else if(panel == "searchUser")
+		$(".user_div").slideDown('slow');
+	else if(panel == "message")
+		$(".message_div").slideDown('slow');
+	else if(panel == "ranking")
+		$(".ranking_div").slideDown('slow');
+	else if(panel == "submiss")
+		$(".submiss_div").slideDown('slow');
+	else if(panel == "feedback")
+		$(".feedback_div").slideDown('slow');
+		
+		
+
 		
 }
 
@@ -154,18 +157,15 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 		$(".displayViewTaskForm").click(function(){
-			$(".list_div").slideUp('slow');
-			$("#task_div").slideDown('slow');
+			window.location.href="../Task/viewTaskForm";
 			});
 
 		$(".displayPoseTaskForm").click(function(){
-			$(".list_div").slideUp('slow');
-			$("#poseTask_div").slideDown('slow');
+			window.location.href="../Task/poseTaskForm";
 			});
 
 		$(".displaySearchUserForm").click(function(){
-			$(".list_div").slideUp('slow');
-			$("#user_div").slideDown('slow');
+			window.location.href="../Task/searchUserForm"
 			});
 
 		$(".displayMessageForm").click(function(){
@@ -176,14 +176,13 @@ $(document).ready(function(){
 			window.location.href="../Ranking/viewRankingList";
 			});
 
-		$(".displayFeedbackForm").click(function(){
-			$(".list_div").slideUp('slow');
-			$("#feedback_div").slideDown('slow');
+		$(".displaySubmissForm").click(function(){
+			window.location.href="../Submiss/submissForm";
 			});
 
-		$(".displaySubmissForm").click(function(){
-			$(".list_div").slideUp('slow');
-			$("#submiss_div").slideDown('slow');
+		$(".displayFeedbackForm").click(function(){
+			window.location.href="../Feedback/feedbackForm";
 			});
+
 		});
 
