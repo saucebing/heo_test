@@ -96,6 +96,7 @@
 							<label class="control-label col-sm-2">Type</label>
 							<div class="col-sm-10">
 							<select name="type" class="form-control"/>
+								<option value="General">General</option>
 								<option value="Fetch the express">Fetch the express</option>
 								<option value="Pack a meal">Pack a meal</option>
 							</select>
@@ -156,6 +157,7 @@
 							<div class="col-sm-10">
 							<select name="type" class="form-control">
 								<option value="all_type">All Type</option>
+								<option value="General">General</option>
 								<option value="Fetch the express">Fetch the express</option>
 								<option value="Pack a meal">Pack a meal</option>
 							</select>
@@ -172,11 +174,11 @@
 							<div class="col-sm-10">
 							<select name="status" class="form-control">
 								<option value="all_status">All Status</option>
-								<option value="New Pose">New Pose</option>
+								<option value="NewPose">NewPose</option>
 								<option value="Received">Received</option>
 								<option value="Accomplished">Accomplished</option>
-								<option value="Excess Available">ExcessAvailable</option>
-								<option value="Excess Accommplish">ExcessAccomplish</option>
+								<option value="ExcessAvailable">ExcessAvailable</option>
+								<option value="ExcessAccomplish">ExcessAccomplish</option>
 							</select>
 							</div>
 							</div>
